@@ -4,7 +4,9 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/", methods = ["GET"])
+url = ""
+
+@app.route("/getResponse", methods = ["GET"])
 def generate_text():
     return jsonify(
         {
