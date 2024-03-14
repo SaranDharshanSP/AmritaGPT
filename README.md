@@ -1,6 +1,7 @@
 # AmritaGPT
 AmritaGPT is a chatbot designed to answer all Amrita Viswa Vidyapeetham related questions, covering topics such as clubs, placements, entrance exams, and more. The system facilitates text-to-text conversation as well as speech-to-text and text-to-speech functionalities. 🤖📚🎙️
 
+
 ## Prototype
 ![figma prototype](https://github.com/SaranDharshanSP/AmritaGPT/assets/111682039/a498a66c-e54b-45ff-931a-be95b7a331bd)
 
