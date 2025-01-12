@@ -2,11 +2,11 @@ import React, { useState, useRef } from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
 
-const ChatInput = ({ addMessage }) => {
-  const [text, setText] = useState("");
-  const [isrecording, setisrecording] = useState(false);
-  const [audiorecord,setaudiorecord] = useState(null);
-  const audioarr = useRef([]);
+const ChatInput = ({addMessage,isLoading}) => {
+    const [query,setquery]=useState("");
+    const [isrecording, setisrecording] = useState(false);
+    const [audiorecord,setaudiorecord] = useState(null);
+    const audioarr = useRef([]);
 
 
 const MicrophoneFunc = async () =>{
@@ -81,27 +81,42 @@ const handleClick = () => {
 };
 
 
+
+  function Inputchange(e){
+    setquery(e.target.value);
+  }
+  function handlesubmit(e){
+    e.preventDefault()
+    console.log("Pressed")
+    if(query.trim()!==""){
+      addMessage({user:true,text:query})
+      setquery("")
+    }
+  }
   return (
-    <div className="flex p-3 items-center">
-      <textarea
-        placeholder="Ask me anything about Amrita Vishwa Vidyapeetham!"
-        className="w-full mr-4 py-4 px-6 rounded-lg outline-none text-sm md:text-lg resize-none"
-        rows="2"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
+    <>
+    <form onSubmit={handlesubmit}>
+    <div className="flex p-3 items-center justify-between">
+      <textarea type="text" placeholder="Ask me anything about Amrita Vishwa Vidyapeetham!"  rows="2" value={query} className="w-full mr-4 py-4 px-6 rounded-lg outline-none text-sm md:text-lg resize-none" onChange={Inputchange} disabled={isLoading} />
       <div
-        className={`transition-all duration-300 ease-in-out p-4 cursor-pointer hover:opacity-80 ${text.trim() ? "bg-white rounded-lg" : "bg-[#A4123F] rounded-full"}`}
+        className={`transition-all duration-100 ease-in-out p-4 cursor-pointer hover:opacity-80 ${query.trim() ? "bg-white rounded-lg" : "bg-[#A4123F] rounded-full"}`}
       >
         <div className="transition-all duration-300 ease-in-out">
-          {text.trim() ? (
+          {query.trim() ? (
+            <button type="submit">
+
             <IoSend size={25} className="text-black transition-transform hover:scale-110" />
+            </button>
           ) : (
-            <FaMicrophone size={25} className={`text-white transition-transform hover:scale-110 ${isrecording ? "animate-pulse animate-bounce" : ""}`} onClick={handleClick} />
+            <FaMicrophone size={25} className={`text-white transition-transform hover:scale-110 ${query? "animate-pulse animate-bounce" : ""}`} onClick={handleClick} />
           )}
         </div>
+
       </div>
     </div>
+    </form>
+
+    </>
   );
 };
 

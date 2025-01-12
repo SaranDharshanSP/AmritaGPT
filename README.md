@@ -5,6 +5,11 @@ AmritaGPT is a chatbot designed to answer all Amrita Viswa Vidyapeetham related 
 ## Prototype
 ![figma prototype](/assets/prototype_image.png)
 
+### Demo
+<video controls>
+<source  src="./assets/demo_video.mp4" type="video/mp4">
+</video>
+
 ## Implementation
 - AmritaGPT collects data from various sources including the Amrita website, Quora, and other relevant platforms. This data is utilized by a RAG-based Large Language Model (LLM) to generate responses. The project relies on LLAMA 3/Gemini model, FAISS, and Langchain for its functionality. The API gateway is powered by FastAPI, with temporary use of ngrok. 🌐🛠️
 
